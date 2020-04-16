@@ -63,7 +63,7 @@ val acquire_act : unit -> action ;;
 
 let rec get_account (id : id) (lst : account_spec list) =
   match lst with
-  | [] -> Not_found
+  | [] -> raise Not_found
   | h :: t -> if id = h.id then h
               else get_account id tl ;;
 
