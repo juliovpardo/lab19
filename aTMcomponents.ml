@@ -89,7 +89,7 @@ let update_balance (id : id) (amt : int) : unit =
 (* present_message message -- Presents to the customer (on stdout) the
    given message followed by a newline. *)
 let present_message (msg : string) : unit =
-  print_string msg ^ "\n" ;;
+  print_string (msg ^ "\n") ;;
 
 (* deliver_cash amount -- Dispenses the given amount of cash to the
    customer (really just prints to stdout a message to that
