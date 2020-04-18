@@ -5,6 +5,22 @@ module DB = Database ;;
 
 (* Customer account identifiers *)
 type id = int ;;
+(*
+                Component Behaviors of an ATM Machine
+
+The functions here represent the component behaviors that an ATM
+machine can take, including: prompting for and acquiring from the
+customer some information (choosing an action or entering an account
+id or an amount); presenting information to the customer; dispensing
+cash.
+
+Implementation of these behaviors is likely to require some database
+of accounts, each with an id number, a customer name, and a current
+balance.
+ *)
+
+(* Customer account identifiers *)
+type id = int
 
 (* Possible actions that an ATM customer can perform *)
 type action =
@@ -72,3 +88,4 @@ let deliver_cash (amount : int) : unit =
   done;
   (* dispense the rest of the cash *)
   printf " and %d more\n" (amount mod 20) ;;
+;;
