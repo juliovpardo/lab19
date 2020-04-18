@@ -2,9 +2,6 @@ open Printf ;;
 open Scanf ;;
 
 module DB = Database ;;
-
-(* Customer account identifiers *)
-type id = int ;;
 (*
                 Component Behaviors of an ATM Machine
 
