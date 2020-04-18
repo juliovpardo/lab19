@@ -1,18 +1,18 @@
-(* 
+(*
                              CS51 Lab 19
                     Synthesis -- The ATM Emulator
  *)
 
 (* Make use of the ATM component behaviors *)
 module ATM = ATMcomponents ;;
-open Printf ;;     
+open Printf ;;
 
 (* Exceptions for: *)
 (* ... moving on to the next customer *)
 exception ATMNext ;;
 (* ... exiting the ATM machine emulation *)
 exception ATMFinished ;;
-            
+
 (* atm initial -- Emulate an ATM communicating over `stdin` and
    `stdout` with customers until finished. The provided `initial` is
    an initial set of accounts to use. *)
@@ -22,21 +22,21 @@ let atm (initial : ATM.account_spec list) : unit =
      name and balance *)
   ATM.initialize initial;
 
-  try 
+  try
     (* process customers until finished *)
     while true do
 
       (* prompt for the customer's id and provide welcome *)
       let id = ATM.acquire_id () in
       ATM.present_message ("Welcome " ^ (ATM.get_name id));
-      
+
       try
         (* perform actions on behalf of the selected customer *)
         while true do
           let act = ATM.acquire_act () in
-          
-          match act with 
-            
+
+          match act with
+
           (* balance inquiry *)
           | Balance ->
              ATM.present_message
@@ -71,7 +71,7 @@ let atm (initial : ATM.account_spec list) : unit =
              raise ATMFinished
         done
       with ATMNext -> ()
-                            
+
     done
   with ATMFinished -> () ;;
 
